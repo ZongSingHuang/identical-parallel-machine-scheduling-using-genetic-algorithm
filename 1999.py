@@ -105,7 +105,11 @@ def mutation(c1, pm, lb, ub):
         for j in range(D):
             r = np.random.uniform()
             if r<=pm:
-                c1[i, j] = np.random.randint(low=lb, high=ub)[j]
+                while True:
+                    temp = np.random.randint(low=lb, high=ub)[j]
+                    if c1[i, j]!=temp:
+                        c1[i, j] = np.random.randint(low=lb, high=ub)[j]
+                        break
     
     return c1
 
